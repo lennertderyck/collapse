@@ -24,7 +24,7 @@
 ```
 
 ### Collapse group
-Add a container div so so if a trigger is used other items will be hidden.
+Add a container div so if a trigger is used other items will be hidden.
 ```html
 <div data-collapse-group="collapseGroupExample">
   <!-- Collapse elements coming here -->
