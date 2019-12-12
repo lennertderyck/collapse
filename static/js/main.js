@@ -1,57 +1,89 @@
-const app = {
-    initialize() {
-        console.log()
-        console.log('\n' + `%c[service] ${arguments.callee.name}() running! \n` + ' ', 'color: #00d400; font-weight: bold');
-        this.cached();
-
-        this.collapseInit();
-    },
-
-    cached() {
-        console.log(`%c[service] ${arguments.callee.name}()`, 'font-weight: bold');
-
-        // Put cache elements here
-        this.collapseTrigger = document.querySelectorAll('[data-collapse-trigger]');
-        this.collapseTarget = document.querySelectorAll('[data-collapse-target]');
-    },
-
-    collapseInit() {
-        console.log(`%c[service] ${arguments.callee.name}()`, 'font-weight: bold');
-
-        let targetName = '';
-        this.collapseTrigger.length !== 0 ? console.log(`\tcollapse triggers available`) : console.log(`\tno collapse triggers`);
-        this.collapseTrigger.forEach((trigger) => {
-            trigger.addEventListener("click", (() => {
-                this.collapseDo(trigger.dataset.collapseTrigger);
-                console.log(`eventlistener added ${trigger.dataset.collapseTrigger}`)
-            }));
-
-            if (trigger.classList.contains('trigger-resting') == false) {
-                console.log(`\tNo class trigger-resting`)
-                trigger.classList.add('trigger-resting');
+(() => {
+    const app = {
+        initialize() {
+            console.log('\n' + `%c[service] ${arguments.callee.name}() running! \n` + ' ', 'color: #00d400; font-weight: bold');
+            console.log(`%c[service] ${arguments.callee.name}()`, 'font-weight: bold');
+            this.cached();
+    
+            this.collapseTrigger.length !== 0 ? console.log(`\tcollapse triggers available`) : console.log(`\tno collapse triggers`);
+            this.collapseTrigger.forEach((trigger) => {
+                trigger.addEventListener("click", (() => {
+                    this.collapseDo(trigger.dataset.collapseTrigger);
+                    console.log(`\teventlistener added ${trigger.dataset.collapseTrigger}`)
+                }));
+    
+                if (trigger.classList.contains('collapse-hidden') == false) {
+                    trigger.classList.add('collapse-hidden');
+                }
+                if (trigger.classList.contains('collapse') == false) {
+                    trigger.classList.add('collapse');
+                }
+            });
+    
+            this.collapseTarget.forEach((item) => {
+                if (item.classList.contains('collapse') == false) {
+                    item.classList.add('collapse');
+                }
+    
+                if (item.classList.contains('collapse-hidden') == false) {
+                    item.classList.add('collapse-hidden');
+                }
+            })
+        },
+    
+        cached() {
+            console.log(`%c[service] ${arguments.callee.name}()`, 'font-weight: bold');
+    
+            // Put cache elements here
+            this.collapseTrigger = document.querySelectorAll('[data-collapse-trigger]');
+            this.collapseTarget = document.querySelectorAll('[data-collapse-target]');
+            this.parent = '';
+            this.targetName = '';
+            this.trigger;
+        },
+    
+        collapseDo(target) {
+            console.log(`%c[service] ${arguments.callee.name}()`, 'font-weight: bold');
+    
+            this.targetName = target;
+            target = document.querySelector(`[data-collapse-target='${target}']`);
+    
+            this.parent = target.dataset.collapseParent;
+            this.parent = document.querySelectorAll(`[data-collapse-id="${this.parent}"] > .collapse`);
+            this.trigger = document.querySelector(`[data-collapse-trigger="${this.targetName}"]`);
+    
+            // FIRST HIDE OTHER COLLAPSES
+            /* this.parent.forEach((item) => {
+                if (item.dataset.collapseTrigger !== this.targetName) {
+                    this.itemHide(item);
+                }
+            }); */
+    
+            // COLLAPSE TRIGGER
+            if (this.trigger.classList.contains('collapse-show') == false) {
+                this.itemShow(this.trigger)
+            } else {
+                this.itemHide(this.trigger);
             }
-        });
-
-        this.collapseTarget.forEach((collapse) => {
-            if (collapse.classList.contains('collapse') == false) {
-                console.log(`\tNo class collapse`)
-                collapse.classList.add('collapse', '');
+    
+            // COLLAPSE TARGET
+            if (target.classList.contains('collapse-show') == false) {
+                this.itemShow(target)
+            } else {
+                this.itemHide(target)
             }
-        })
-    },
+        },
 
-    collapseDo(target) {
-        console.log(`%c[service] ${arguments.callee.name}()`, 'font-weight: bold');
+        itemHide(input) {
+            input.classList.remove('collapse-show');
+            input.classList.add('collapse-hidden');
+        },
 
-        target = document.querySelector(`[data-collapse-target='${target}']`);
-
-        if (target.classList.contains('show') == false) {
-            target.classList.add('show');
-            target.classList.remove('hidden');
-
-        } else {
-            target.classList.remove('show');
-            target.classList.add('hidden');
+        itemShow(input) {
+            input.classList.add('collapse-show');
+            input.classList.remove('collapse-hidden');
         }
     }
-}
+
+    app.initialize();
+})()

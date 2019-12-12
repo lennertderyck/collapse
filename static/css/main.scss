@@ -5,11 +5,11 @@
 }
 
 [data-collapse-target] {
-    &.hidden {
+    &.collapse-hidden {
         display: none;
     }
 
-    &.show {
+    &.collapse-show {
         display: block;
     }
 }

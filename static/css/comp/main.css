@@ -5,11 +5,11 @@
   padding: 0;
 }
 
-[data-collapse-target].hidden {
+[data-collapse-target].collapse-hidden {
   display: none;
 }
 
-[data-collapse-target].show {
+[data-collapse-target].collapse-show {
   display: block;
 }
 /*# sourceMappingURL=main.css.map */

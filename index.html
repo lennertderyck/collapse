@@ -7,24 +7,24 @@
     <title>Document</title>
 
     <script src="https://ce.lennertderyck.be/library/elements.js"></script>
-    <script src="./static/js/main.js"></script>
     <link rel="stylesheet" href="./static/css/comp/main.css">
 </head>
 <body>
-    <button data-collapse-trigger="test">Open</button>
-    <div data-collapse-target="test">
-        <p>Lol</p>
-        <p>Lol</p>
-        <p>Lol</p>
+    <div data-collapse-id="filter">
+        <button data-collapse-trigger="test">Open</button>
+        <div data-collapse-target="test" data-collapse-parent="filter">
+            <p>Lol</p>
+            <p>Lol</p>
+            <p>Lol</p>
+        </div>
+        <button data-collapse-trigger="thistest">Open</button>
+        <div data-collapse-target="thistest" data-collapse-parent="filter">
+            <p>Lol</p>
+            <p>Lol</p>
+            <p>Lol</p>
+        </div>
     </div>
-    <button data-collapse-trigger="thistest">Open</button>
-    <div data-collapse-target="thistest">
-        <p>Lol</p>
-        <p>Lol</p>
-        <p>Lol</p>
-    </div>
-    <script>
-        app.initialize();
-    </script>
+
+    <script src="./static/js/main.js"></script>
 </body>
 </html>
