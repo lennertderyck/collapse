@@ -4,4 +4,12 @@
   margin: 0;
   padding: 0;
 }
+
+[data-collapse-target].hidden {
+  display: none;
+}
+
+[data-collapse-target].show {
+  display: block;
+}
 /*# sourceMappingURL=main.css.map */

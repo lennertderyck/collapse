@@ -3,3 +3,13 @@
     margin: 0;
     padding: 0;
 }
+
+[data-collapse-target] {
+    &.hidden {
+        display: none;
+    }
+
+    &.show {
+        display: block;
+    }
+}
