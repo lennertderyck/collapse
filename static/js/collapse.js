@@ -1,7 +1,7 @@
 (() => {
     const app = {
         initialize() {
-            console.log('\n' + `%c[service] ${arguments.callee.name}() running! \n` + ' ', 'color: #00d400; font-weight: bold');
+            console.log('\n' + `%c[service] collapse.js ${arguments.callee.name}() running! \n` + ' ', 'color: #00d400; font-weight: bold');
             console.log(`%c[service] ${arguments.callee.name}()`, 'font-weight: bold');
             this.cached();
     
@@ -9,12 +9,12 @@
             this.collapseTrigger.forEach((trigger) => {
                 trigger.addEventListener("click", (() => {
                     this.collapseDo(trigger.dataset.collapseTrigger);
-                    console.log(`\teventlistener added ${trigger.dataset.collapseTrigger}`)
                 }));
     
                 if (trigger.classList.contains('collapse-hidden') == false) {
                     trigger.classList.add('collapse-hidden');
                 }
+                
                 if (trigger.classList.contains('collapse') == false) {
                     trigger.classList.add('collapse');
                 }
@@ -52,16 +52,16 @@
             this.parent = document.querySelectorAll(`[data-collapse-id="${this.parent}"] > .collapse`);
             this.trigger = document.querySelector(`[data-collapse-trigger="${this.targetName}"]`);
     
-            // FIRST HIDE OTHER COLLAPSES
-            /* this.parent.forEach((item) => {
-                if (item.dataset.collapseTrigger !== this.targetName) {
-                    this.itemHide(item);
-                }
-            }); */
-    
             // COLLAPSE TRIGGER
             if (this.trigger.classList.contains('collapse-show') == false) {
-                this.itemShow(this.trigger)
+                this.itemShow(this.trigger);
+
+                // HIDE ALSO OTHER ELEMENTS
+                this.parent.forEach((item) => {
+                    if (item.dataset.collapseTrigger !== this.targetName) {
+                        this.itemHide(item);
+                    }
+                });
             } else {
                 this.itemHide(this.trigger);
             }
@@ -71,6 +71,13 @@
                 this.itemShow(target)
             } else {
                 this.itemHide(target)
+
+                // HIDE ALSO OTHER ELEMENTS
+                this.parent.forEach((item) => {
+                    if (item.dataset.collapseTarget !== this.targetName) {
+                        this.itemHide(item);
+                    }
+                });
             }
         },
 
