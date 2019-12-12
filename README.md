@@ -33,7 +33,7 @@ Add a container div so so if a trigger is used other items will be hidden.
 
 Now you add the following data-attribute to the collapse items ([see below](#collapsed-item)) so the container div recognizes it's children.
 ```html
-data-collapse-trigger="exampleCollapseFirst"
+data-collapse-parent="collapseGroupExample"
 ```
 
 ### Trigger
