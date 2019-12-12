@@ -2,8 +2,8 @@
     "version": 3,
     "mappings": "AAAA,AAAA,CAAC,AAAC,CACE,UAAU,CAAE,UAAU,CACtB,MAAM,CAAE,CAAC,CACT,OAAO,CAAE,CAAC,CACb,CAED,AAAA,AACI,oBADH,AAAA,CACI,gBAAgB,AAAC,CACd,OAAO,CAAE,IAAI,CAChB,CAHL,AAAA,AAKI,oBALH,AAAA,CAKI,cAAc,AAAC,CACZ,OAAO,CAAE,KAAK,CACjB",
     "sources": [
-        "../main.scss"
+        "../collapse.scss"
     ],
     "names": [],
-    "file": "main.min.css"
+    "file": "collapse.min.css"
 }
