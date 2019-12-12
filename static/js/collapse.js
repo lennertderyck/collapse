@@ -49,7 +49,7 @@
             target = document.querySelector(`[data-collapse-target='${target}']`);
     
             this.parent = target.dataset.collapseParent;
-            this.parent = document.querySelectorAll(`[data-collapse-id="${this.parent}"] > .collapse`);
+            this.parent = document.querySelectorAll(`[data-collapse-group="${this.parent}"] > .collapse`);
             this.trigger = document.querySelector(`[data-collapse-trigger="${this.targetName}"]`);
     
             // COLLAPSE TRIGGER
